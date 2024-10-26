@@ -1,8 +1,9 @@
-import { Box, Button, Grid, TextField, Typography, Divider, ThemeProvider, createTheme } from '@mui/material';
+import { Box, Button, Grid, TextField, Typography, Divider, ThemeProvider, createTheme, InputAdornment, IconButton } from '@mui/material';
 import { Facebook, Apple, Google, Visibility, VisibilityOff } from '@mui/icons-material';
 import { useState, useEffect } from 'react';
 import AttachFile from '@mui/icons-material/AttachFile';
 import Send from '@mui/icons-material/Send';
+import Image from 'next/image';
 
 const theme = createTheme({
   typography: {
@@ -44,18 +45,20 @@ export default function LoginPage() {
 
             <TextField fullWidth label="Phone number or email" margin="normal" />
             <TextField
-              fullWidth
-              label="Password"
-              type={showPassword ? 'text' : 'password'}
-              margin="normal"
-              InputProps={{
-                endAdornment: (
-                  <Button onClick={togglePasswordVisibility}>
-                    {showPassword ? <VisibilityOff /> : <Visibility />}
-                  </Button>
-                ),
-              }}
-            />
+  fullWidth
+  label="Password"
+  type={showPassword ? 'text' : 'password'}
+  margin="normal"
+  InputProps={{
+    endAdornment: (
+      <InputAdornment position="end">
+        <IconButton onClick={togglePasswordVisibility}>
+          {showPassword ? <VisibilityOff /> : <Visibility />}
+        </IconButton>
+      </InputAdornment>
+    ),
+  }}
+/>
 <Box display="flex" justifyContent="flex-end" width="100%">
   <Button 
     sx={{ textAlign: 'right', mt: -1 }} // Removed fullWidth here
@@ -76,17 +79,22 @@ export default function LoginPage() {
             </Button>
 
             <Box border="1px solid #ccc" borderRadius={2} p={2} mt={2} display="flex" alignItems="center" justifyContent="space-between">
-              <Box display="flex" alignItems="center">
-                <input type="checkbox" id="captcha" style={{ transform: 'scale(2.5)', marginLeft: 16 }} />
-                <label htmlFor="captcha" style={{ fontWeight: '100', marginLeft: 32, color: '#888' }}>I am human</label>
-              </Box>
+            <Box display="flex" alignItems="center">
+  <input type="checkbox" id="captcha" style={{ transform: 'scale(1.5)', marginLeft: 8 }} />
+  <Typography variant="body2" component="label" htmlFor="captcha" sx={{ fontWeight: 400, ml: 1 }}>
+    I am human
+  </Typography>
+</Box>
 
               <Box display="flex" flexDirection="column" alignItems="center">
-                <img 
-                  src="https://www.cdnlogo.com/logos/h/4/hcaptcha.svg" 
-                  alt="Captcha" 
-                  style={{ width: 30, height: 30, marginRight: 8 }} 
-                />
+              <Image 
+  src="https://www.cdnlogo.com/logos/h/4/hcaptcha.svg" 
+  alt="Captcha" 
+  width={30} 
+  height={30} 
+  style={{ marginRight: 8 }} 
+/>
+
                 <Typography variant="caption" color="textSecondary">
                   Privacy - Terms
                 </Typography>
@@ -168,7 +176,7 @@ export default function LoginPage() {
               {/* Row for Text and Logo */}
               <Box display="flex" alignItems="center" justifyContent="space-between" ml={4} mr={4} mt={1} mb={1}>
                 <Typography variant="h6">Welcome back</Typography>
-                <img 
+                <Image 
                   src="https://assets.coingecko.com/coins/images/3687/large/ocean-protocol-logo.jpg?1696504363" 
                   alt="Ocean Protocol Logo" 
                   style={{ width: 50, height: 50 }} 
