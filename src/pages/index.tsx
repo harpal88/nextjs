@@ -88,11 +88,11 @@ export default function LoginPage() {
 
               <Box display="flex" flexDirection="column" alignItems="center">
               <Image 
-  src="https://www.cdnlogo.com/logos/h/4/hcaptcha.svg" 
+  src="/captcha.svg" 
   alt="Captcha" 
-  width={30} 
-  height={30} 
-  style={{ marginRight: 8 }} 
+  width={30} // Set width as a number
+  height={30} // Set height as a number
+  style={{ marginRight: 8 }} // Apply additional styles as needed
 />
 
                 <Typography variant="caption" color="textSecondary">
@@ -151,9 +151,11 @@ export default function LoginPage() {
             </Button>
 
             <Box mt={3} textAlign="center">
-              <Typography variant="body2">
-                Don't you have an account? <Button>Sign up</Button>
-              </Typography>
+              {/* Original JSX */}
+<Typography variant="body2">
+  Don&apos;t you have an account? <Button>Sign up</Button>
+</Typography>
+
             </Box>
           </Box>
         </Grid>
@@ -177,10 +179,11 @@ export default function LoginPage() {
               <Box display="flex" alignItems="center" justifyContent="space-between" ml={4} mr={4} mt={1} mb={1}>
                 <Typography variant="h6">Welcome back</Typography>
                 <Image 
-                  src="https://assets.coingecko.com/coins/images/3687/large/ocean-protocol-logo.jpg?1696504363" 
-                  alt="Ocean Protocol Logo" 
-                  style={{ width: 50, height: 50 }} 
-                />
+  src="/logo.webp" 
+  alt="Ocean Protocol Logo" 
+  width={50} // Set width as a number
+  height={50} // Set height as a number
+/>
               </Box>
 
               {/* Divider in a new row */}
